@@ -61,9 +61,9 @@ const ChatInput = ({ onSubmit, disabled }: InputProps) => {
       <input
         value={input}
         onChange={(e) => setInput((e.target as HTMLInputElement).value)}
-        className="w-full py-2 px-3 text-gray-800 rounded-lg focus:outline-none"
+        className="w-full px-3 text-gray-800 rounded-lg focus:outline-none"
         type="text"
-        placeholder="Enter prompt.."
+        placeholder="Enter Prompt"
         disabled={disabled}
         onKeyDown={(e: KeyboardEvent) => handleEnterKey(e)}
       />
@@ -111,14 +111,18 @@ export default function ChatApp() {
   };
 
   return (
-    <main className="relative max-w-2xl mx-auto">
-      <div className="flex sticky top-0 w-full pt-10 px-4 bg-white">
-      <Image src={logo} alt="logo" height={256} width={256} className="justify-left" />
-        <ChatInput
-          onSubmit={(input: string) => queryApi(input)}
-          disabled={loading}
-        />
-      </div>
+    <main className="relative mx-auto">
+      <nav className="sticky w-screen py-2 px-4 bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center">
+        <div className="flex">
+          <Image src={logo} alt="logo" height={256} width={256} />
+        </div>
+        <div className="flex ml-20">
+          <ChatInput
+            onSubmit={(input: string) => queryApi(input)}
+            disabled={loading}
+          />
+        </div>
+      </nav>
       <div className="mt-10 px-4">
         {messages.map((message: MessageProps) => (
           <ChatMessage
