@@ -3,6 +3,8 @@ import { Twilio } from "twilio";
 import MessagingResponse from "twilio/lib/twiml/MessagingResponse";
 import { Configuration, OpenAIApi } from "openai";
 import nextSession from "next-session";
+import PdfParse from "pdf-parse";
+import fs from "fs";
 
 const getSession = nextSession();
 
@@ -12,6 +14,15 @@ const openaiConfig = new Configuration({
 
 const openai = new OpenAIApi(openaiConfig);
 
+// TODO: Fix issue with sending GPT responses to the user
+
+// const filename = process.env.FILENAME;
+// let dataBuffer = fs.readFileSync(filename ? filename : "");
+// let pdfText: string;
+// PdfParse(dataBuffer).then(function (data) {
+//   pdfText = data.text;
+// });
+
 export default async function sendMessage(
   req: NextApiRequest,
   res: NextApiResponse
@@ -20,17 +31,21 @@ export default async function sendMessage(
   if (!session.chatHistory || session.chatHistory === null) {
     session.chatHistory = [
       { role: "system", content: "You are a helpful assistant." },
+      // TODO: Chunk the pdfText into smaller requests
+      // { role: "user", content: pdfText },
     ];
   }
 
   let prompt: string = req.body.Body;
+  console.log(req.body.Body);
 
   session.chatHistory.push({ role: "user", content: `${prompt}` });
+  const chatLog = session.chatHistory;
 
   // https://platform.openai.com/docs/api-reference/chat/create
   const completionOutput = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
-    messages: session.chatHistory,
+    messages: chatLog,
     temperature: 0.5,
     frequency_penalty: 0.5,
   });
@@ -74,4 +89,7 @@ export default async function sendMessage(
     res.writeHead(200, { "Content-Type": "text/xml" });
     return res.end(smsResponse.toString());
   }
+
+  res.setHeader("Content-Type", "application/json");
+  res.end(JSON.stringify({ text: completionResponse }));
 }

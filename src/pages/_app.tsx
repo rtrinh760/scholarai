@@ -116,14 +116,43 @@ export default function ChatApp() {
         <div className="flex">
           <Image src={logo} alt="logo" height={256} width={256} />
         </div>
-        <div className="flex ml-20">
+        <div className="flex mx-auto ">
           <ChatInput
             onSubmit={(input: string) => queryApi(input)}
             disabled={loading}
           />
         </div>
+        <div className=" max-w-3xl px-3">
+          <div className="flex md:flex-row gap-6">
+            <label className="transition-colors duration-150 cursor-pointer hover:text-gray-800">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-14 h-14"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+                />
+              </svg>
+              <input className="block w-0 h-0" name="file" type="file" />
+            </label>
+            <div className="flex mt-4 md:mt-0 md:flex-col justify-center">
+              <button
+                disabled={false}
+                className="w-1/2 px-4 py-3 text-sm font-medium text-white transition-colors duration-300 bg-black rounded-lg md:w-auto md:text-base disabled:bg-gray-400 hover:bg-gray-800"
+              >
+                Upload file
+              </button>
+            </div>
+          </div>
+        </div>
       </nav>
-      <div className="mt-10 px-4">
+      <div className="mt-5 px-4">
         {messages.map((message: MessageProps) => (
           <ChatMessage
             key={message.key}
@@ -131,6 +160,11 @@ export default function ChatApp() {
             messenger={message.messenger}
           />
         ))}
+        {messages.length == 0 && (
+          <p className="text-center text-2xl text-bold text-black">
+            Enter a prompt above or upload a pdf to get started!
+          </p>
+        )}
       </div>
     </main>
   );
