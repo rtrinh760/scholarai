@@ -1,6 +1,14 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🎓 ScholarAI
 
-## Getting Started
+Instant document summarizer for your work and school related needs
+
+## This project includes:
+
+* Next.js, utilizing Next's API routing capabilities
+* Routes for ChatGPT and Twilio APIs
+* Frontend design with TailwindCSS
+
+## ⚙️ Getting Started
 
 First, run the development server:
 
@@ -14,25 +22,22 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+* Note that you will need to provide your own OpenAI and Twilio API keys in a .env file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Edit the page by modifying `pages/_app.tsx`. The page auto-updates as you edit the file.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Modify the API routes by changing the TypeScript files in the `pages/api` directory. Files in this directory are treated as [routes] instead of React pages.
 
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [OpenAI Documentation](https://platform.openai.com/docs/introduction) - learn about OpenAI's APIs and models.
+- [API Keys] (https://platform.openai.com/account/api-keys) - link to finding your OpenAI API keys.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Next Steps
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Create a more user-friendly UI 
+- Add various buttons for functions such as quizzes for ease of use
+- Allow users to input their own API keys (provide a link to get one as well).
