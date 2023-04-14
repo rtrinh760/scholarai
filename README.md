@@ -2,7 +2,7 @@
 
 Instant document summarizer for your work and school related needs
 
-## This project includes:
+## 👾 This project includes:
 
 * Next.js, utilizing Next's API routing capabilities
 * Routes for ChatGPT and Twilio APIs
@@ -28,7 +28,7 @@ Edit the page by modifying `pages/_app.tsx`. The page auto-updates as you edit t
 
 Modify the API routes by changing the TypeScript files in the `pages/api` directory. Files in this directory are treated as [routes] instead of React pages.
 
-## Learn More
+## 🧩 Learn More
 
 To learn more about Next.js, take a look at the following resources:
 
@@ -36,7 +36,7 @@ To learn more about Next.js, take a look at the following resources:
 - [OpenAI Documentation](https://platform.openai.com/docs/introduction) - learn about OpenAI's APIs and models.
 - [API Keys] (https://platform.openai.com/account/api-keys) - link to finding your OpenAI API keys.
 
-## Next Steps
+## 💡 Next Steps
 
 - Create a more user-friendly UI 
 - Add various buttons for functions such as quizzes for ease of use
